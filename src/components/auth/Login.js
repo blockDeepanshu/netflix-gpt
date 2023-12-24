@@ -8,16 +8,16 @@ import {
 } from "firebase/auth";
 import { auth } from "../../utils/firebase";
 import { EyeIcon, EyeOffIcon } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+
 import { useDispatch } from "react-redux";
 import { addUser } from "../../utils/store/slices/userSlice";
+import { BACKGROUND_IMAGE_URL } from "../../utils/constants";
 
 const Login = () => {
   const [isSignedInForm, setSignedInForm] = useState(true);
   const [errorMsg, setErroMsg] = useState(null);
   const [showPassword, setShowPassword] = useState(false);
 
-  const navigate = useNavigate();
   const dispatch = useDispatch();
 
   const toggleSignInFom = () => {
@@ -56,7 +56,7 @@ const Login = () => {
       )
         .then((userCredential) => {
           // Signed up
-          navigate("/browse");
+
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
@@ -84,9 +84,7 @@ const Login = () => {
         email.current.value,
         password.current.value
       )
-        .then((userCredential) => {
-          navigate("/browse");
-        })
+        .then((userCredential) => {})
         .catch((error) => {
           if (error.code === "auth/invalid-credential");
           setErroMsg("Login failed : Invalid credentials");
@@ -98,10 +96,7 @@ const Login = () => {
     <div>
       <Navbar />
       <div className="absolute w-screen h-screen overflow-hidden">
-        <img
-          src="https://assets.nflxext.com/ffe/siteui/vlv3/563192ea-ac0e-4906-a865-ba9899ffafad/6b2842d1-2339-4f08-84f6-148e9fcbe01b/IN-en-20231218-popsignuptwoweeks-perspective_alpha_website_large.jpg"
-          alt="background"
-        />
+        <img src={BACKGROUND_IMAGE_URL} alt="background" />
       </div>
       <form
         onSubmit={(e) => e.preventDefault()}
