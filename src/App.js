@@ -1,10 +1,12 @@
+import { Provider } from "react-redux";
 import Main from "./components/layout/Main";
+import appStore from "./utils/store/appStore";
 
 function App() {
   return (
-    <div>
+    <Provider store={appStore}>
       <Main />
-    </div>
+    </Provider>
   );
 }
 
