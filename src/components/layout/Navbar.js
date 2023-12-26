@@ -39,14 +39,15 @@ const Navbar = () => {
   }, []);
 
   return (
-    <div className="flex justify-between w-screen absolute px-8 py-4  bg-gradient-to-b from-black z-30">
+    <div className="flex justify-between  w-screen absolute px-8 py-4 bg-gradient-to-b from-black z-30">
       <img src={LOGO_URL} alt="logo" />
+
       {user && (
         <div className="flex">
           <img
             className="h-10 w-10 rounded-full m-2 bg-white"
-            alt={userdata.displayName}
-            src={userdata.photoURL}
+            alt={userdata?.displayName}
+            src={userdata?.photoURL}
           />
           <button
             onClick={handleLogout}

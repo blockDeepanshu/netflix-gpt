@@ -11,7 +11,7 @@ import { EyeIcon, EyeOffIcon } from "lucide-react";
 
 import { useDispatch } from "react-redux";
 import { addUser } from "../../utils/store/slices/userSlice";
-import { BACKGROUND_IMAGE_URL } from "../../utils/constants";
+import { BACKGROUND_IMAGE_URL, PROFILE_URL } from "../../utils/constants";
 
 const Login = () => {
   const [isSignedInForm, setSignedInForm] = useState(true);
@@ -60,8 +60,7 @@ const Login = () => {
           const user = userCredential.user;
           updateProfile(user, {
             displayName: name.current.value,
-            photoURL:
-              "https://imgs.search.brave.com/1_IVJqjyhwHicfLOl9gy6L-MsrD11T5Dc2IjSllpkeI/rs:fit:500:0:0/g:ce/aHR0cHM6Ly9jZG4t/aWNvbnMtcG5nLmZs/YXRpY29uLmNvbS8x/MjgvNjQvNjQ1NzIu/cG5n",
+            photoURL: PROFILE_URL,
           })
             .then(() => {
               const { uid, displayName, email, photoURL } = auth.currentUser;

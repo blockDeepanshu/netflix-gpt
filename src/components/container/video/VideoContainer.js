@@ -1,14 +1,13 @@
 import React from "react";
-import VideoTitle from "./video/VideoTitle";
-import VideoBackground from "./video/VideoBackground";
+import VideoTitle from "./VideoTitle";
+import VideoBackground from "../VideoBackground";
 import { useSelector } from "react-redux";
 
 const VideoContainer = () => {
   const movies = useSelector((store) => store.movies?.nowPlayingMovies);
-  if (movies === null) return;
+  if (!movies) return;
 
-  const { original_title, overview, id } =
-    movies[Math.floor(Math.random() * 20)];
+  const { original_title, overview, id } = movies[10];
 
   return (
     <div>
