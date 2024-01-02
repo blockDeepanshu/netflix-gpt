@@ -4,6 +4,7 @@ import MovieCard from "./MovieCard";
 const MovieList = ({ title, movies }) => {
   const containerRef = useRef(null);
   const cardWidthRef = useRef(0);
+
   useEffect(() => {
     const container = containerRef.current;
 

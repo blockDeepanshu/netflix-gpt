@@ -12,8 +12,7 @@ export const useMovieTrailer = (movieId) => {
       url: `https://api.themoviedb.org/3/movie/${movieId}/videos?language=en-US`,
       headers: {
         accept: "application/json",
-        Authorization:
-          "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZWJlMGE4MDQ4MjcxZjgyNjM3MWE4ZTMwMjNiYTU4NCIsInN1YiI6IjY1ODdkZmFkNGZkMTQxNzJkODVmYmE4OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._0bgtSCkR84g3R091eJo3uMB5Q0OjRC1dND1aNa6QHg",
+        Authorization: `Bearer ${process.env.REACT_APP_TMDB_ACCESS_TOKEN}`,
       },
     };
 

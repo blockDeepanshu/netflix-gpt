@@ -9,14 +9,13 @@ import {
   addUpcomingMovies,
 } from "../utils/store/slices/movieSlice";
 
-const getOptions = (url) => {
+export const getOptions = (url) => {
   const options = {
     method: "GET",
     url: url,
     headers: {
       accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI3ZWJlMGE4MDQ4MjcxZjgyNjM3MWE4ZTMwMjNiYTU4NCIsInN1YiI6IjY1ODdkZmFkNGZkMTQxNzJkODVmYmE4OCIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ._0bgtSCkR84g3R091eJo3uMB5Q0OjRC1dND1aNa6QHg",
+      Authorization: `Bearer ${process.env.REACT_APP_TMDB_ACCESS_TOKEN}`,
     },
   };
 
@@ -32,7 +31,7 @@ export const usePlayingMoviesNow = () => {
 
   const getPlayingNowMovies = async () => {
     const { data } = await axios.request(nowPlayingMoviesOptions);
-    console.log("data", data);
+
     dispatch(addNowPlaingMovies(data.results));
   };
 
@@ -50,7 +49,7 @@ export const usePopularMovies = () => {
 
   const getPopularMovies = async () => {
     const { data } = await axios.request(popularMoviesOptions);
-    console.log("data", data);
+
     dispatch(addPopularMovies(data.results));
   };
 
@@ -68,7 +67,7 @@ export const useTopRatedMovies = () => {
 
   const getTopRatedMovies = async () => {
     const { data } = await axios.request(topRatedMoviesOptions);
-    console.log("data", data);
+
     dispatch(addTopRatedMovies(data.results));
   };
 
@@ -86,7 +85,7 @@ export const useUpcomingMovies = () => {
 
   const getUpcomingMovies = async () => {
     const { data } = await axios.request(upcomingOptions);
-    console.log("data", data);
+
     dispatch(addUpcomingMovies(data.results));
   };
 

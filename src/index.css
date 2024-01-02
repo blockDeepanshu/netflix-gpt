@@ -6,4 +6,5 @@
 ::-webkit-scrollbar {
   width: 10px;
   overflow-x: hidden;
+  background-color: black;
 }

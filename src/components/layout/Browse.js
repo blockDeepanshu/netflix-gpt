@@ -1,6 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
-import VideoContainer from "../container/video/VideoContainer";
+import VideoContainer from "../container/VideoContainer";
 import MoviesListContainer from "../container/MoviesListContainer";
 import {
   usePlayingMoviesNow,
@@ -8,6 +8,8 @@ import {
   useTopRatedMovies,
   useUpcomingMovies,
 } from "../../hooks/useMovies";
+import GptSearchContainer from "../container/GptSearchContainer";
+import { useSelector } from "react-redux";
 
 const Browse = () => {
   usePlayingMoviesNow();
@@ -15,11 +17,19 @@ const Browse = () => {
   usePopularMovies();
   useUpcomingMovies();
 
+  const isGptPage = useSelector((store) => store.gpt.isGptPage);
+
   return (
     <div>
       <Navbar />
-      <VideoContainer />
-      <MoviesListContainer />
+      {isGptPage ? (
+        <GptSearchContainer />
+      ) : (
+        <>
+          <VideoContainer />
+          <MoviesListContainer />
+        </>
+      )}
     </div>
   );
 };
